@@ -103,3 +103,15 @@ const getImageOfTheDay = (state) => {
 
     return data
 }
+
+
+const getRovers = (state) => {
+    let { rovers } = state
+
+    fetch(`http://localhost:3000/rovers`)
+        .then(res => res.json())
+        .then(rovers => updateStore(store, { rovers }))
+
+    return data
+}
+
