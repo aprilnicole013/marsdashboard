@@ -115,3 +115,11 @@ const getRoverPhotos = (roverName) => {
             root.innerHTML = `<section> <img src= "${data.roverPhotos.latest_photos[0].img_src}" height="350px" width="100%" /> </section>`
         })
 }
+
+const getRoverDetails = (roverName) => {
+    fetch(`http://localhost:3000/manifests/${roverName}`)
+        .then(res => res.json())
+        .then(data => {
+            root.innerHTML = `<section> <img src= "${data.roverPhotos.latest_photos[0].img_src}" height="350px" width="100%" /> </section>`
+        })
+}

@@ -5,11 +5,29 @@ body {
   flex-direction: column;
   font-family: Arial;
   min-height: 100vh;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  color: #faebeb;
+  text-align: center;
+  background-image: url("https://images.unsplash.com/photo-1451188502541-13943edb6acb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1600&q=80");
+}
+
+img {
+  border-width: 10px;
+  border-color: black;
+  border-style: ridge;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 
 header {
   /* header styles */
 }
+
 
 main {
   flex: 1;
