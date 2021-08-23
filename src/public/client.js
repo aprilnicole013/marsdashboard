@@ -1,19 +1,25 @@
 let store = {
     user: { name: "Student" },
-    roverData: {},
+    roverData: [],
     rovers: ['Curiosity', 'Opportunity', 'Spirit'],
-    currentRover: 'Curiosity',
-    roverPhotos: {}
 }
 
-// add our markup to the page
 const root = document.getElementById('root')
 
-// const updateStore = (store, newState) => {
-//     store = Object.assign(store, newState)
-//     render(root, store)
-// }
+const updateStore = (data) => {
+    let roversFromStore = data
 
+    newState = {
+        user: { name: "Student" },
+        roverData: [roversFromStore],
+        rovers: ['Curiosity', 'Opportunity', 'Spirit'],
+    }
+    
+    store = Object.assign(store, newState)
+    // render(root, store)
+}
+
+console.log(store)
 // const render = async (root, state) => {
 //     root.innerHTML = App(state)
 // }
@@ -47,8 +53,6 @@ const root = document.getElementById('root')
 
 // listening for load event because page should load before any JS is called
 window.addEventListener('load', () => {
-    getRoverPhotos(store.currentRover)
-    console.log(getRoverPhotos(store.currentRover))
     // render(root, store)
 })
 
@@ -107,19 +111,16 @@ window.addEventListener('load', () => {
 
 //     return data
 // }
+roverNames = store.rovers //pulls a full list of all 3 rovers
 
-const getRoverPhotos = (roverName) => {
+roverNames.forEach((roverName) => {
+    getRoverInfo = []
     fetch(`http://localhost:3000/rovers/${roverName}/photos`)
         .then(res => res.json())
         .then(data => {
+            getRoverInfo.push(data.roverPhotos.latest_photos[0])
             root.innerHTML = `<section> <img src= "${data.roverPhotos.latest_photos[0].img_src}" height="350px" width="100%" /> </section>`
         })
-}
 
-const getRoverDetails = (roverName) => {
-    fetch(`http://localhost:3000/manifests/${roverName}`)
-        .then(res => res.json())
-        .then(data => {
-            root.innerHTML = `<section> <img src= "${data.roverPhotos.latest_photos[0].img_src}" height="350px" width="100%" /> </section>`
-        })
-}
+    updateStore(getRoverInfo)
+})
