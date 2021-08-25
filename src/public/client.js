@@ -1,7 +1,7 @@
 let store = {
     user: { name: "Student" },
     roverData: [],
-    rovers: ['Curiosity', 'Opportunity', 'Spirit'],
+    rovers: ['Spirit', 'Opportunity', 'Curiosity'],
 }
 
 const root = document.getElementById('root')
@@ -12,7 +12,7 @@ const updateStore = (data) => {
     newState = {
         user: { name: "Student" },
         roverData: [roversFromStore],
-        rovers: ['Curiosity', 'Opportunity', 'Spirit'],
+        rovers: ['Spirit', 'Opportunity', 'Curiosity'],
     }
     
     store = Object.assign(store, newState)
@@ -112,23 +112,42 @@ window.addEventListener('load', () => {
 //     return data
 // }
 
-//Open Curiosity info on click event listener 
+
+
+//Open Rover info on click event listener 
 function seeCuriosity(){
-    console.log("Curiosity Open")
+    console.log(store.roverData[0][2].rover.name)
+    console.log(store.roverData[0][2].rover.status)
+    console.log(store.roverData[0][2].rover.landing_date)
+    console.log(store.roverData[0][2].rover.launch_date)
+    console.log(store.roverData[0][2].earth_date)
+    console.log(store.roverData[0][2].img_src)
 }
 
-//Open Opportunity info on click event listener 
 function seeOpportunity(){
-    console.log("Opportunity Open")
+    console.log(store.roverData[0][0])
+    console.log(store.roverData[0][0].rover.name)
+    console.log(store.roverData[0][0].rover.status)
+    console.log(store.roverData[0][0].rover.landing_date)
+    console.log(store.roverData[0][0].rover.launch_date)
+    console.log(store.roverData[0][0].earth_date)
+    console.log(store.roverData[0][0].img_src)
 }
 
-//Open Spirit info on click event listener 
 function seeSpirit(){
-    console.log("Spirit Open")
+    console.log(store.roverData[0][1])
+    console.log(store.roverData[0][1].rover.name)
+    console.log(store.roverData[0][1].rover.status)
+    console.log(store.roverData[0][1].rover.landing_date)
+    console.log(store.roverData[0][1].rover.launch_date)
+    console.log(store.roverData[0][1].earth_date)
+    console.log(store.roverData[0][1].img_src)
 }
 
-roverNames = store.rovers //pulls a full list of all 3 rovers
+//pulls a full list of all 3 rovers
+roverNames = store.rovers 
 
+//Rover API call
 roverNames.forEach((roverName) => {
     getRoverInfo = []
     fetch(`http://localhost:3000/rovers/${roverName}/photos`)
