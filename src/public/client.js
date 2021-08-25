@@ -25,7 +25,7 @@ console.log(store)
 // }
 
 
-// // create content
+// create content
 // const App = (state) => {
 //     let { rovers, apod } = state
 
@@ -111,6 +111,22 @@ window.addEventListener('load', () => {
 
 //     return data
 // }
+
+//Open Curiosity info on click event listener 
+function seeCuriosity(){
+    console.log("Curiosity Open")
+}
+
+//Open Opportunity info on click event listener 
+function seeOpportunity(){
+    console.log("Opportunity Open")
+}
+
+//Open Spirit info on click event listener 
+function seeSpirit(){
+    console.log("Spirit Open")
+}
+
 roverNames = store.rovers //pulls a full list of all 3 rovers
 
 roverNames.forEach((roverName) => {
