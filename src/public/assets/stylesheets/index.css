@@ -16,10 +16,12 @@ img {
   border-width: 10px;
   border-color: black;
   border-style: ridge;
+  height: "350px";
+  width:"100%";
 }
 
-ul {
-  list-style-type: none;
+section {
+  text-align: center;
   margin: 0;
   padding: 0;
 }
@@ -32,6 +34,10 @@ header {
 main {
   flex: 1;
   padding: 20px;
+}
+
+#roverTile {
+
 }
 
 footer {
