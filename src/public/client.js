@@ -26,14 +26,14 @@ const App = (state) => {
             <h2 id="curiosityBtn" onclick="onClick('Curiosity')" class="container">Curiosity</h2>
             </section>
             <section>
-               <h2 id="opportunityBtn" onclick=onClick('Opportunity') class="container">Opportunity</h2>
+               <h2 id="opportunityBtn" onclick="onClick('Opportunity')" class="container">Opportunity</h2>
             </section>
             <section>
-                <h2 id="spiritBtn" onclick=onClick('Spirit') class="container">Spirit</h2>
+                <h2 id="spiritBtn" onclick="onClick('Spirit')" class="container">Spirit</h2>
             </section>
         </div>
-         </main>
-         <footer></footer>
+        </main>
+        <footer></footer>
          `
 }
 
@@ -43,19 +43,18 @@ window.addEventListener('load', () => {
 })
 
 //Open Rover info on click event listener 
-function onClick(roverName) {
-    // document.getElementById("curiosityBtn").innerHTML = store.roverData[0].roverDetails.rover.landing_date
-    document.getElementById("curiosityBtn").innerHTML = store[roverName].rover.landing_date
-    // let img = document.createElement("img");
-    // img.src = store.roverName.roverDetails.img_src;
-    // var src = document.getElementById("curiosityBtn");
-    // src.appendChild(img);
 
-    // console.log(store.roverData[0].roverDetails.rover.name
-    // console.log(store.roverData[0].roverDetails.rover.landing_date)
-    // console.log(store.roverData[0].roverDetails.rover.launch_date)
-    // console.log(store.roverData[0].roverDetails.rover.status)
-    // console.log(store.roverData[0].roverDetails.img_src)
+function onClick(roverName) {
+
+    document.getElementById("curiosityBtn").innerHTML = `
+    <div class="card">
+        <h2>Rover Name: ${store[roverName].rover.name}</h2>
+        <p>Landing Date: ${store[roverName].rover.landing_date}</p>
+        <p>Launch Date: ${store[roverName].rover.launch_date}</p>
+        <p>Rover Status: ${store[roverName].rover.status}</p>
+        <p>Latest Photo: </p><img src="${store[roverName].img_src}" alt="Latest photo captured by ${roverName} rover"/>
+        </p>
+    </div>`
 }
 
 //pulls a full list of all 3 rovers
