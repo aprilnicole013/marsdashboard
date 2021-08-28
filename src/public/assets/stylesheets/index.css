@@ -20,9 +20,9 @@ img {
   border-width: 10px;
   border-color: black;
   border-style: ridge;
-  height: auto 0;
-  max-width: auto 0;
-  display: center center;
+  height: 300px;
+  width: 100%;
+  position: center;
 }
 
 section {
@@ -34,11 +34,13 @@ section {
 main {
   flex: 1;
   padding: 20px;
+  position: center;
 }
 
-.card {
-  width: 1000px;
-  padding: 20px;
+#card {
+  width: 500px;
+  padding: 10px;
+  position: center;
 }
 
 /* -------------------  TABLET  --------------------- */

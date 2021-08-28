@@ -11,7 +11,6 @@ const updateStore = (roverName, roverData) => {
     store = Object.assign(store, newState);
     render(root, store);
 }
-console.log(store)
 
 const render = async(root, state) => {
     root.innerHTML = App(state)
@@ -19,22 +18,21 @@ const render = async(root, state) => {
 
 const App = (state) => {
     return `
-        <header></header>
-        <main>
-        <div>
-            <button id="curiosityBtn" onclick="onClick('Curiosity')" class="container">
-            <h2>Curiosity</h2>
-            </button>
-            <button id="opportunityBtn" onclick="onClick('Opportunity')" class="container">
-               <h2>Opportunity</h2>
-               </button>
-            <button id="spiritBtn" onclick="onClick('Spirit')" class="container">
-                <h2>Spirit</h2>
+        <main id="rover-info">
+            <section id="buttons">
+
+                <button id="curiosityBtn" onclick="onClick('Curiosity')" class="container">
+                    <h2>Curiosity</h2>
                 </button>
-        </div>
+                <button id="opportunityBtn" onclick="onClick('Opportunity')" class="container">
+                    <h2>Opportunity</h2>
+                </button>
+                <button id="spiritBtn" onclick="onClick('Spirit')" class="container">
+                    <h2>Spirit</h2>
+                </button>
+            </section>
         </main>
-        <footer></footer>
-         `
+    `
 }
 
 // listening for load event because page should load before any JS is called
@@ -42,11 +40,11 @@ window.addEventListener('load', () => {
     render(root, store)
 })
 
-
 //Click rover buttons
 function onClick(roverName) {
-    document.getElementById("curiosityBtn").innerHTML = `
+    document.getElementById("rover-info").innerHTML = `
     <div class="card">
+        <button onClick="window.location.reload();">Refresh Page</button>
         <h2 class="card-title" style="color: black">Rover: ${store[roverName].rover.name}</h2>
         <p style="color: black">Landing Date: ${store[roverName].rover.landing_date}</p>
         <p style="color: black">Launch Date: ${store[roverName].rover.launch_date}</p>
@@ -56,7 +54,11 @@ function onClick(roverName) {
         </div>
     </div>
     `
+}
 
+// Remove form from screen
+function removeRoverInfo(){
+    document.querySelector("#buttons").style.display = "none"
 }
 
 //IF Statement to display a fact
