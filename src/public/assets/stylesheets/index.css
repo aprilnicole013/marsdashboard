@@ -37,6 +37,10 @@ main {
   position: center;
 }
 
+div {
+  color: black;
+}
+
 #card {
   width: 500px;
   padding: 10px;

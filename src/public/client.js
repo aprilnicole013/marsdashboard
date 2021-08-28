@@ -45,13 +45,13 @@ function onClick(roverName) {
     document.getElementById("rover-info").innerHTML = `
     <div class="card">
         <button onClick="window.location.reload();">Refresh Page</button>
-        <h2 class="card-title" style="color: black">Rover: ${store[roverName].rover.name}</h2>
-        <p style="color: black">Landing Date: ${store[roverName].rover.landing_date}</p>
-        <p style="color: black">Launch Date: ${store[roverName].rover.launch_date}</p>
-        <p style="color: black">Rover Status: ${store[roverName].rover.status}</p>
-        <p style="color: black">${roverFact(roverName)}
-        <div style="color: black">Latest Photo: </p><img src="${store[roverName].img_src}" alt="Latest photo captured by ${roverName} rover"/>
-        </div>
+        <h2>Rover: ${store[roverName].rover.name}</h2>
+        <p>Landing Date: ${store[roverName].rover.landing_date}</p>
+        <p>Launch Date: ${store[roverName].rover.launch_date}</p>
+        <p>Rover Status: ${store[roverName].rover.status}</p>
+        <p>${roverFact(roverName)}
+        <p>Latest Photo: </p><img src="${store[roverName].img_src}" alt="Latest photo captured by ${roverName} rover"/>
+        </p>
     </div>
     `
 }
@@ -64,11 +64,11 @@ function removeRoverInfo(){
 //IF Statement to display a fact
 const roverFact = (roverName) => {
     if (store[roverName].rover.name == "Curiosity"){
-       return `<p>Fact: Fun fact about Curiosity rover</p>`
+       return `<p>Fun Fact: This rover has an instrument called ChemCam which will fire a laser at Martian rocks from up to 30 feet (9 meters) away and analyze the composition of the vaporized bits. This enables Curiosity to study rocks out of reach of its flexible robotic arm and helps the mission team determine whether or not they want to send the rover over to investigate a particular landform.</p>`
     } else if (store[roverName].rover.name == "Opportunity"){
-        return `<p>Fact: Fun fact about Opportunity rover</p>`
+        return `<p>Fun Fact: Opportunity also discovered small spheres of hematite nicknamed "blueberries" that formed late from rising, acidic groundwater. Once Opportunity reached the rim of Endeavour crater, the rover found white veins of the mineral gypsum - a telltale sign of water that traveled through underground fractures.</p>`
     } else if (store[roverName].rover.name == "Spirit"){
-        return `<p>Fact: Fun fact about Spirit rover</p>`
+        return `<p>Fun Fact: This little 6-wheeled rover far outlasted its planned 90-day mission before becoming stuck in soft sand. Despite extensive efforts to release the rover, the last communications with Spirit were received over 6 years after it landed!</p>`
     }
 }
 
