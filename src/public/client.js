@@ -1,6 +1,7 @@
 let store = {
     user: { name: "Student" },
     rovers: Immutable.List(['Curiosity', 'Opportunity', 'Spirit']),
+    roverFactObj: {}
 }
 
 const root = document.getElementById('root')
@@ -73,14 +74,12 @@ const roverFact = {
     Opportunity: "Opportunity also discovered small spheres of hematite nicknamed 'blueberries' that formed late from rising, acidic groundwater. Once Opportunity reached the rim of Endeavour crater, the rover found white veins of the mineral gypsum - a telltale sign of water that traveled through underground fractures."
 }
 
-const roverFactObj = {}
-
 store.rovers.map((rover) => {
-    roverFactObj[rover] = roverFact[rover]
+    store.roverFactObj[rover] = roverFact[rover]
 })
 
 const getRoverFact = (roverName) => {
-    return roverFactObj[roverName]
+    return store.roverFactObj[roverName]
 }
 
 //pulls a full list of all 3 rovers
