@@ -4,6 +4,18 @@ let store = {
     roverFactObj: {}
 }
 
+const roverNames = store.rovers
+
+const roverFacts = {
+    Spirit: "This rover has an instrument called ChemCam which will fire a laser at Martian rocks from up to 30 feet (9 meters) away and analyze the composition of the vaporized bits. This enables Curiosity to study rocks out of reach of its flexible robotic arm and helps the mission team determine whether or not they want to send the rover over to investigate a particular landform.",
+    Curiosity: "This rover has an instrument called ChemCam which will fire a laser at Martian rocks from up to 30 feet (9 meters) away and analyze the composition of the vaporized bits. This enables Curiosity to study rocks out of reach of its flexible robotic arm and helps the mission team determine whether or not they want to send the rover over to investigate a particular landform.",
+    Opportunity: "Opportunity also discovered small spheres of hematite nicknamed 'blueberries' that formed late from rising, acidic groundwater. Once Opportunity reached the rim of Endeavour crater, the rover found white veins of the mineral gypsum - a telltale sign of water that traveled through underground fractures."
+}
+
+roverNames.map((rover) => {
+    store.roverFactObj[rover] = roverFacts[rover]
+})
+
 const root = document.getElementById('root')
 
 const updateStore = (roverName, roverData) => {
@@ -63,18 +75,6 @@ function onClick(roverName) {
     </div>
     `
 }
-
-roverNames = store.rovers
-
-const roverFacts = {
-    Spirit: "This rover has an instrument called ChemCam which will fire a laser at Martian rocks from up to 30 feet (9 meters) away and analyze the composition of the vaporized bits. This enables Curiosity to study rocks out of reach of its flexible robotic arm and helps the mission team determine whether or not they want to send the rover over to investigate a particular landform.",
-    Curiosity: "This rover has an instrument called ChemCam which will fire a laser at Martian rocks from up to 30 feet (9 meters) away and analyze the composition of the vaporized bits. This enables Curiosity to study rocks out of reach of its flexible robotic arm and helps the mission team determine whether or not they want to send the rover over to investigate a particular landform.",
-    Opportunity: "Opportunity also discovered small spheres of hematite nicknamed 'blueberries' that formed late from rising, acidic groundwater. Once Opportunity reached the rim of Endeavour crater, the rover found white veins of the mineral gypsum - a telltale sign of water that traveled through underground fractures."
-}
-
-roverNames.map((rover) => {
-    store.roverFactObj[rover] = roverFacts[rover]
-})
 
 const getRoverFact = (roverName) => {
     return store.roverFactObj[roverName]
