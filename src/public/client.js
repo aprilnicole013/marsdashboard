@@ -1,7 +1,6 @@
-
 let store = {
     user: { name: "Student" },
-    rovers: ['Spirit', 'Opportunity', 'Curiosity'],
+    rovers: Immutable.List(['Spirit', 'Opportunity', 'Curiosity']),
 }
 
 const root = document.getElementById('root')
@@ -23,17 +22,14 @@ const App = (state) => {
         <header></header>
         <main>
         <div>
-            <button>
-            <h2 id="curiosityBtn" onclick="onClick('Curiosity')" class="container">Curiosity</h2>
-            <img src="https://hips.hearstapps.com/pop.h-cdn.co/assets/15/32/980x490/landscape-1438787673-curiosity-web.jpg?resize=980:*" class="img-fluid"alt="curiosity rover"/>
+            <button id="curiosityBtn" onclick="onClick('Curiosity')" class="container">
+            <h2>Curiosity</h2>
             </button>
-            <button>
-               <h2 id="opportunityBtn" onclick="onClick('Opportunity')" class="container">Opportunity</h2>
-               <img src="https://cdn.britannica.com/s:690x388,c:crop/93/93293-050-92D12F74/Artist-conception-Mars-Exploration-Rover.jpg" class="img-fluid"alt="opportunity rover"/>
+            <button id="opportunityBtn" onclick="onClick('Opportunity')" class="container">
+               <h2>Opportunity</h2>
                </button>
-            <button>
-                <h2 id="spiritBtn" onclick="onClick('Spirit')" class="container">Spirit</h2>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/NASA_Mars_Rover.jpg/1920px-NASA_Mars_Rover.jpg" class="img-fluid"alt="opportunity rover"/>
+            <button id="spiritBtn" onclick="onClick('Spirit')" class="container">
+                <h2>Spirit</h2>
                 </button>
         </div>
         </main>
@@ -46,6 +42,7 @@ window.addEventListener('load', () => {
     render(root, store)
 })
 
+
 //Click rover buttons
 function onClick(roverName) {
     document.getElementById("curiosityBtn").innerHTML = `
@@ -54,35 +51,12 @@ function onClick(roverName) {
         <p style="color: black">Landing Date: ${store[roverName].rover.landing_date}</p>
         <p style="color: black">Launch Date: ${store[roverName].rover.launch_date}</p>
         <p style="color: black">Rover Status: ${store[roverName].rover.status}</p>
-        <p style="color: black">Fact: ${roverFact(roverName)}
-        <p style="color: black">Latest Photo: </p><img src="${store[roverName].img_src}" alt="Latest photo captured by ${roverName} rover"/>
-        </p>
-    </div>
-    `
-
-    document.getElementById("opportunityBtn").innerHTML = `
-    <div class="card">
-        <h2 class="card-title" style="color: black">Rover: ${store[roverName].rover.name}</h2>
-        <p style="color: black">Landing Date: ${store[roverName].rover.landing_date}</p>
-        <p style="color: black">Launch Date: ${store[roverName].rover.launch_date}</p>
-        <p style="color: black">Rover Status: ${store[roverName].rover.status}</p>
-        <p style="color: black">Fact: ${roverFact(roverName)}
-        <p style="color: black">Latest Photo: </p><img src="${store[roverName].img_src}" alt="Latest photo captured by ${roverName} rover"/>
-        </p>
-    </div>
-    `
-
-    document.getElementById("spiritBtn").innerHTML = `
-    <div class="card">
-        <h2 class="card-title" style="color: black">Rover: ${store[roverName].rover.name}</h2>
-        <p style="color: black">Landing Date: ${store[roverName].rover.landing_date}</p>
-        <p style="color: black">Launch Date: ${store[roverName].rover.launch_date}</p>
-        <p style="color: black">Rover Status: ${store[roverName].rover.status}</p>
         <p style="color: black">${roverFact(roverName)}
-        <p style="color: black"></p><img src="${store[roverName].img_src}" alt="Latest photo captured by ${roverName} rover"/>
-        </p>
+        <div style="color: black">Latest Photo: </p><img src="${store[roverName].img_src}" alt="Latest photo captured by ${roverName} rover"/>
+        </div>
     </div>
     `
+
 }
 
 //IF Statement to display a fact
