@@ -21,7 +21,6 @@ const App = (state) => {
     return `
     <div id="marsintro"></div>
     <h1>Mars Rover Dashboard</h1>
-
     <div>
         <p>Home to both the Solar System's highest mountain <i>(Olympus Mons)</i>, and deepest canyon <i>(Valles Marineris)</i>, Mars is the also the planet most likely to support life outside of Earth; seasonal methane plumes observed over several decades
             have yet to be explained.</p>
@@ -58,7 +57,7 @@ function onClick(roverName) {
         <p>Landing Date: ${store[roverName].rover.landing_date}</p>
         <p>Launch Date: ${store[roverName].rover.launch_date}</p>
         <p>Rover Status: ${store[roverName].rover.status} </p>
-        <p>${getRoverFact(roverName)}</p>
+        <p>${roverFact(roverName)}</p>
         <p>Latest Photo: </p><img src="${store[roverName].img_src}" alt="Latest photo captured by ${roverName} rover"/>
         </p>
     </div>
@@ -67,18 +66,22 @@ function onClick(roverName) {
 
 roverNames = store.rovers
 
-const roverFact = {
+const roverFacts = {
     Spirit: "This rover has an instrument called ChemCam which will fire a laser at Martian rocks from up to 30 feet (9 meters) away and analyze the composition of the vaporized bits. This enables Curiosity to study rocks out of reach of its flexible robotic arm and helps the mission team determine whether or not they want to send the rover over to investigate a particular landform.",
     Curiosity: "This rover has an instrument called ChemCam which will fire a laser at Martian rocks from up to 30 feet (9 meters) away and analyze the composition of the vaporized bits. This enables Curiosity to study rocks out of reach of its flexible robotic arm and helps the mission team determine whether or not they want to send the rover over to investigate a particular landform.",
     Opportunity: "Opportunity also discovered small spheres of hematite nicknamed 'blueberries' that formed late from rising, acidic groundwater. Once Opportunity reached the rim of Endeavour crater, the rover found white veins of the mineral gypsum - a telltale sign of water that traveled through underground fractures."
 }
 
 roverNames.map((rover) => {
-    store.roverFactObj[rover] = roverFact[rover]
+    store.roverFactObj[rover] = roverFacts[rover]
 })
 
 const getRoverFact = (roverName) => {
     return store.roverFactObj[roverName]
+}
+
+const roverFact = (roverName) => {
+    return getRoverFact(roverName)
 }
 
 roverNames.forEach((roverName) => {
