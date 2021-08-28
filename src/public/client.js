@@ -66,8 +66,6 @@ function onClick(roverName) {
     `
 }
 
-let rovers = ['Spirit', 'Curiosity', 'Opportunity']
-
 //IF Statement to display a fact
 const roverFact = {
     Spirit: "This rover has an instrument called ChemCam which will fire a laser at Martian rocks from up to 30 feet (9 meters) away and analyze the composition of the vaporized bits. This enables Curiosity to study rocks out of reach of its flexible robotic arm and helps the mission team determine whether or not they want to send the rover over to investigate a particular landform.",
@@ -77,7 +75,7 @@ const roverFact = {
 
 const roverFactObj = {}
 
-rovers.map((rover) => {
+store.rovers.map((rover) => {
     roverFactObj[rover] = roverFact[rover]
 })
 
