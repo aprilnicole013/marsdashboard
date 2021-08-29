@@ -69,7 +69,7 @@ window.addEventListener('load', () => {
     render(root, store)
 })
 
-function onClick(roverName) {
+function renderHTML(roverName){
     document.getElementById("rover-info").innerHTML = `
     <div class="card">
         <button onClick="window.location.reload();">Refresh Page</button>
@@ -82,6 +82,10 @@ function onClick(roverName) {
         </p>
     </div>
     `
+}
+
+function onClick(roverName) {
+    return renderHTML(roverName)
 }
 
 const Greeting = (name) => {
