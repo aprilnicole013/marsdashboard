@@ -69,7 +69,24 @@ window.addEventListener('load', () => {
     render(root, store)
 })
 
-function renderHTML(roverName){
+const Greeting = (name) => {
+    let hour = new Date().getHours()
+    if (hour >= 12 || hour >= 17) {
+        return `
+        <h2>Good evening from Mars, ${name}!</h2>
+        `
+    } else if (hour >= 1 || hour <= 12) {
+        return `
+        <h2>Good morning from Mars, ${name}!</h2>
+        `
+    } else {
+        return `
+        <h2>Good night from Mars, ${name}!</h2>
+        `
+    }
+}
+
+function renderHTML(roverName) {
     document.getElementById("rover-info").innerHTML = `
     <div class="card">
         <button onClick="window.location.reload();">Refresh Page</button>
@@ -86,23 +103,6 @@ function renderHTML(roverName){
 
 function onClick(roverName) {
     return renderHTML(roverName)
-}
-
-const Greeting = (name) => {
-    let hour = new Date().getHours()
-    if (hour >= 12 || hour >= 17) {
-        return `
-        <h2>Good evening from Mars, ${name}!</h2>
-        `
-    } else if (hour >= 1 || hour <= 12) {
-        return `
-        <h2>Good morning from Mars, ${name}!</h2>
-        `
-    } else {
-        return `
-        <h2>Good night from Mars, ${name}!</h2>
-        `
-    }
 }
 
 const getRoverFact = (roverName) => {
