@@ -3,7 +3,7 @@
 body {
   display: flex;
   flex-direction: column;
-  font-family: Arial;
+  font-family: Optima, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   min-height: 100vh;
   padding-top: 3rem;
   padding-bottom: 3rem;
@@ -48,6 +48,8 @@ div {
   padding: 10px;
   position: center;
 }
+
+
 
 /* -------------------  TABLET  --------------------- */
 @media (min-width: 768px) {

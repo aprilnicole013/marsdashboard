@@ -7,7 +7,7 @@ let store = {
 const roverNames = store.rovers
 
 const roverFacts = {
-    Spirit: "This rover has an instrument called ChemCam which will fire a laser at Martian rocks from up to 30 feet (9 meters) away and analyze the composition of the vaporized bits. This enables Curiosity to study rocks out of reach of its flexible robotic arm and helps the mission team determine whether or not they want to send the rover over to investigate a particular landform.",
+    Spirit: "This little 6-wheeled rover far outlasted its planned 90-day mission before becoming stuck in soft sand. Despite extensive efforts to release the rover, the last communications with Spirit were received over 6 years after it landed!",
     Curiosity: "This rover has an instrument called ChemCam which will fire a laser at Martian rocks from up to 30 feet (9 meters) away and analyze the composition of the vaporized bits. This enables Curiosity to study rocks out of reach of its flexible robotic arm and helps the mission team determine whether or not they want to send the rover over to investigate a particular landform.",
     Opportunity: "Opportunity also discovered small spheres of hematite nicknamed 'blueberries' that formed late from rising, acidic groundwater. Once Opportunity reached the rim of Endeavour crater, the rover found white veins of the mineral gypsum - a telltale sign of water that traveled through underground fractures."
 }
@@ -29,6 +29,26 @@ const render = async(root, state) => {
     root.innerHTML = App(state)
 }
 
+function genarateButtons(){
+
+}
+
+function displayButtons(){
+    return `
+    <section id="buttons">
+        <button id="curiosityBtn" onclick="onClick('Curiosity')" class="container">
+            <h2>Curiosity</h2>
+        </button>
+        <button id="opportunityBtn" onclick="onClick('Opportunity')" class="container">
+            <h2>Opportunity</h2>
+        </button>
+        <button id="spiritBtn" onclick="onClick('Spirit')" class="container">
+            <h2>Spirit</h2>
+        </button>
+    </section>
+    `
+}
+
 const App = (state) => {
     return `
     <div id="marsintro"></div>
@@ -40,19 +60,8 @@ const App = (state) => {
     <div>
         <p>Click below to see the latest image collected from NASA Mars rovers.</p>
     </div>
-        <header></header>
         <main id="rover-info">
-            <section id="buttons">
-                <button id="curiosityBtn" onclick="onClick('Curiosity')" class="container">
-                    <h2>Curiosity</h2>
-                </button>
-                <button id="opportunityBtn" onclick="onClick('Opportunity')" class="container">
-                    <h2>Opportunity</h2>
-                </button>
-                <button id="spiritBtn" onclick="onClick('Spirit')" class="container">
-                    <h2>Spirit</h2>
-                </button>
-            </section>
+            ${displayButtons()}
         </main>
     `
 }
@@ -66,11 +75,11 @@ function onClick(roverName) {
     <div class="card">
         <button onClick="window.location.reload();">Refresh Page</button>
         <h2>Rover: ${store[roverName].rover.name}</h2>
-        <p>Landing Date: ${store[roverName].rover.landing_date}</p>
-        <p>Launch Date: ${store[roverName].rover.launch_date}</p>
-        <p>Rover Status: ${store[roverName].rover.status} </p>
-        <p>${roverFact(roverName)}</p>
-        <p>Latest Photo: </p><img src="${store[roverName].img_src}" alt="Latest photo captured by ${roverName} rover"/>
+        <p><b>Landing Date:</b> ${store[roverName].rover.landing_date}</p>
+        <p><b>Launch Date:</b> ${store[roverName].rover.launch_date}</p>
+        <p><b>Rover Status:</b> <span>${store[roverName].rover.status}</span></p>
+        <p><b>Fun Fact:</b> ${roverFact(roverName)}</p>
+        <p><b>Latest Photo:</b> </p><img src="${store[roverName].img_src}" alt="Latest photo captured by ${roverName} rover"/>
         </p>
     </div>
     `
@@ -82,6 +91,14 @@ const getRoverFact = (roverName) => {
 
 const roverFact = (roverName) => {
     return getRoverFact(roverName)
+}
+
+function statusColor(roverName) {
+    if (store[roverName].rover.status == 'active') {
+        return '<span style="color: green"></span>'
+    } else {
+        return '<span style="color: red"></span>'
+    }
 }
 
 roverNames.forEach((roverName) => {
