@@ -29,10 +29,6 @@ const render = async(root, state) => {
     root.innerHTML = App(state)
 }
 
-function genarateButtons(){
-
-}
-
 function displayButtons(){
     return `
     <section id="buttons">
@@ -54,6 +50,7 @@ const App = (state) => {
     <div id="marsintro"></div>
     <h1>Mars Rover Dashboard</h1>
     <div>
+        ${Greeting(store.user.name)}
         <p>Home to both the Solar System's highest mountain <i>(Olympus Mons)</i>, and deepest canyon <i>(Valles Marineris)</i>, Mars is the also the planet most likely to support life outside of Earth; seasonal methane plumes observed over several decades
             have yet to be explained.</p>
     </div>
@@ -77,11 +74,22 @@ function onClick(roverName) {
         <h2>Rover: ${store[roverName].rover.name}</h2>
         <p><b>Landing Date:</b> ${store[roverName].rover.landing_date}</p>
         <p><b>Launch Date:</b> ${store[roverName].rover.launch_date}</p>
-        <p><b>Rover Status:</b> <span>${store[roverName].rover.status}</span></p>
+        <p><b>Rover Status:</b> <span class="status">${store[roverName].rover.status}</span></p>
         <p><b>Fun Fact:</b> ${roverFact(roverName)}</p>
         <p><b>Latest Photo:</b> </p><img src="${store[roverName].img_src}" alt="Latest photo captured by ${roverName} rover"/>
         </p>
     </div>
+    `
+}
+
+const Greeting = (name) => {
+    if (name) {
+        return `
+            <h2>Welcome, ${name}!</h2>
+        `
+    }
+    return `
+        <h2>Hello!</h2>
     `
 }
 
@@ -91,14 +99,6 @@ const getRoverFact = (roverName) => {
 
 const roverFact = (roverName) => {
     return getRoverFact(roverName)
-}
-
-function statusColor(roverName) {
-    if (store[roverName].rover.status == 'active') {
-        return '<span style="color: green"></span>'
-    } else {
-        return '<span style="color: red"></span>'
-    }
 }
 
 roverNames.forEach((roverName) => {
