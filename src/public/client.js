@@ -93,7 +93,7 @@ function renderHTML(roverName) {
         <h2>Rover: ${store[roverName].rover.name}</h2>
         <p><b>Landing Date:</b> ${store[roverName].rover.landing_date}</p>
         <p><b>Launch Date:</b> ${store[roverName].rover.launch_date}</p>
-        <p><b>Rover Status:</b> <span class="status">${store[roverName].rover.status}</span></p>
+        <p><b>Rover Status:</b>${store[roverName].rover.status}</p>
         <p><b>Fun Fact:</b> ${roverFact(roverName)}</p>
         <p><b>Latest Photo:</b> </p><img src="${store[roverName].img_src}" alt="Latest photo captured by ${roverName} rover"/>
         </p>
