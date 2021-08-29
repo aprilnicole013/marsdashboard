@@ -86,13 +86,17 @@ function onClick(roverName) {
 
 const Greeting = (name) => {
     let hour = new Date().getHours()
-    if (hour >= 12 || hour >= 24) {
+    if (hour >= 12 || hour >= 17) {
         return `
         <h2>Good evening from Mars, ${name}!</h2>
         `
     } else if (hour >= 1 || hour <= 12) {
         return `
         <h2>Good morning from Mars, ${name}!</h2>
+        `
+    } else {
+        return `
+        <h2>Good night from Mars, ${name}!</h2>
         `
     }
 }
