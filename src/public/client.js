@@ -1,5 +1,7 @@
 let store = {
-    user: { name: "Student" },
+    user: {
+        name: "Student"
+    },
     rovers: Immutable.List(['Curiosity', 'Opportunity', 'Spirit']),
     roverFactObj: {}
 }
@@ -25,11 +27,11 @@ const updateStore = (roverName, roverData) => {
     render(root, store);
 }
 
-const render = async(root, state) => {
+const render = async (root, state) => {
     root.innerHTML = App(state)
 }
 
-function displayButtons(){
+function displayButtons() {
     return `
     <section id="buttons">
         <button id="curiosityBtn" onclick="onClick('Curiosity')" class="container">
@@ -84,11 +86,11 @@ function onClick(roverName) {
 
 const Greeting = (name) => {
     let hour = new Date().getHours()
-    if (hour >= 12 || hour >= 23) {
+    if (hour >= 12 || hour >= 24) {
         return `
-            <h2>Good evening from Mars, ${name}!</h2>
+        <h2>Good evening from Mars, ${name}!</h2>
         `
-    } else if (hour >=1 || hour <= 12) {
+    } else if (hour >= 1 || hour <= 12) {
         return `
         <h2>Good morning from Mars, ${name}!</h2>
         `
